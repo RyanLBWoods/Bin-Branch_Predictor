@@ -1,30 +1,65 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
         // TODO Auto-generated method stub
-        BufferedReader br = new BufferedReader(new FileReader(args[0]));
-        Predictor bp = null;
+        BufferedReader br = new BufferedReader(new FileReader("branchtrace.out"));
+//        Predictor bp = null;
         
-        switch(Integer.valueOf(args[1])){
-        case 1:
-            
-        }
         
+        ArrayList<String[]> blist = new ArrayList<String[]>();
         try{
-            String line = br.readLine();
-            long branches = 0;
-            int correctP = 0;
-            while (line != null) {
-                branches++;
+            String line = null;
+//            System.out.println(line);
+//            long branches = 0;
+//            int correctP = 0;
+////            int i = 0;
+            while ((line = br.readLine()) != null) {
+//                branches++;
                 String[] token = line.split(" ");
-                
+                blist.add(token);
             }
         }finally{
+            br.close();
+        }
+        System.out.println("1: Alway taken");
+        System.out.println("2: Alway not taken");
+        System.out.println("3: 2 bit predictor");
+        System.out.println("4: correlating predictor");
+        System.out.println("5: gshare");
+        System.out.println("6: a profiled approach");
+        System.out.println("Please select Branch Prediction Strategy(number) to see the misprediction rate:");
+        Scanner sc = new Scanner(System.in);
+        int bps = sc.nextInt();
+        sc.close();
+        double mispre = 0;
+        double rate = 0;
+        String misrate = null;
+        NumberFormat nf = NumberFormat.getPercentInstance();
+            nf.setMinimumFractionDigits(4);
+        switch(bps){
+        default:
+            System.out.println("Sorry, please input the correct number!");
+            break;
+        case 1:
+            mispre = StaticPrediction.NTPredict(blist);
+            rate = mispre / blist.size();
+            misrate = nf.format(rate);
+            System.out.println("The misprediction rate is " + misrate);
+            break;
+        case 2:
+            mispre = StaticPrediction.TPredict(blist);
+            rate = mispre / blist.size();
+            misrate = nf.format(rate);
+            System.out.println("The misprediction rate is " + misrate);
+            break;
             
         }
     }
-
 }
