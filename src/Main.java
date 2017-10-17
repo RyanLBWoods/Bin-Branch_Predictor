@@ -17,11 +17,11 @@ public class Main {
         try{
             String line = null;
 //            System.out.println(line);
-//            long branches = 0;
+            long branches = 0;
 //            int correctP = 0;
 ////            int i = 0;
             while ((line = br.readLine()) != null) {
-//                branches++;
+                branches++;
                 String[] token = line.split(" ");
                 blist.add(token);
             }
@@ -59,7 +59,12 @@ public class Main {
             misrate = nf.format(rate);
             System.out.println("The misprediction rate is " + misrate);
             break;
-            
+        case 3:
+            mispre = DynamicPrediction.TwoBit(blist);
+            rate = mispre / blist.size();
+            misrate = nf.format(rate);
+            System.out.println("The misprediction rate is " + misrate);
+            break;
         }
     }
 }
