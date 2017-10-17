@@ -26,13 +26,13 @@ public class DynamicPrediction {
                     tb[1] = 0;
                 }else if (current_branch[1].equals("1")){
                     mispre++;
+//                    tb[0] = 1;
                     tb[0] = 1;
-                    tb[1] = 0;
                 }
             } else if (Arrays.equals(tb, WEAKLY_T)){
                 if(current_branch[1].equals("0")){
                     tb[0] = 0;
-                    tb[1] = 1;
+//                    tb[1] = 1;
                     mispre++;
                 }else if(current_branch[1].equals("1")){
                     tb[1] = 1;
