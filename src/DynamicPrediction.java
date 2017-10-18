@@ -10,7 +10,7 @@ public class DynamicPrediction {
     
     public static double TwoBit(ArrayList<String[]> trace){
         double mispre = 0;
-        double[] tb = {1, 1};
+        double[] tb = {1, 0};
         
         for(int i = 0; i < trace.size(); i++){
             String[] current_branch = trace.get(i);
@@ -26,7 +26,7 @@ public class DynamicPrediction {
                     tb[1] = 0;
                 }else if (current_branch[1].equals("1")){
                     mispre++;
-//                    tb[0] = 1;
+//                    tb[1] = 0;
                     tb[0] = 1;
                 }
             } else if (Arrays.equals(tb, WEAKLY_T)){

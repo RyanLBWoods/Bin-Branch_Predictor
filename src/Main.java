@@ -30,10 +30,7 @@ public class Main {
         }
         System.out.println("1: Alway taken");
         System.out.println("2: Alway not taken");
-        System.out.println("3: 2 bit predictor");
-        System.out.println("4: correlating predictor");
-        System.out.println("5: gshare");
-        System.out.println("6: a profiled approach");
+        System.out.println("3: 2 bit predictor (4096)");
         System.out.println("Please select Branch Prediction Strategy(number) to see the misprediction rate:");
         Scanner sc = new Scanner(System.in);
         int bps = sc.nextInt();
@@ -64,6 +61,11 @@ public class Main {
             rate = mispre / blist.size();
             misrate = nf.format(rate);
             System.out.println("The misprediction rate is " + misrate);
+            
+//            mispre = BTB.TwoBit(blist, 1);
+//            rate = mispre / blist.size();
+//            misrate = nf.format(rate);
+//            System.out.println("The misprediction rate is " + misrate);
             break;
         }
     }
